@@ -7,7 +7,8 @@ export class Job {
         public wage: string,
         public benefits: string[],
         public isRemote: boolean,
-        public localization: string
+        public localization: string,
+        public isActive: boolean
     ) {
         
     }
