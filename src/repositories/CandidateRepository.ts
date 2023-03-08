@@ -4,7 +4,7 @@ export class CandidateRepository {
     private candidates: Candidate[];
     private static INSTANCE: CandidateRepository;
     
-    constructor() {
+    private constructor() {
         this.candidates = [];
     }
 
