@@ -1,4 +1,4 @@
-import { CandidateRepository } from "../../repositories/CandidateRepository";
+import { CandidateRepository } from "../../../repositories/CandidateRepository";
 import { v4 as uuidV4 } from "uuid";
 
 interface IRequest{

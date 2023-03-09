@@ -1,7 +1,7 @@
 export class Job {
 
     constructor(
-        public id: number,
+        public id: string | number,
         public name: string,
         public requirements: string[],
         public wage: string,
