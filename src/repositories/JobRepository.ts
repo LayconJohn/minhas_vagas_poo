@@ -2,7 +2,7 @@ import { Job } from "../models/Jobs";
 
 export class JobsRepository {
     private jobs: Job[]
-    private static INSTANCE: JobsRepository;
+    protected static INSTANCE: JobsRepository;
 
     constructor() {
         this.jobs = [];

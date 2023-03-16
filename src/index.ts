@@ -2,6 +2,7 @@ import express, { json } from "express";
 import cors from "cors";
 import clientRouter from "./routers/candidateRouter";
 import jobRouter from "./routers/jobRouter";
+import jobRouterDiversity from "./routers/jobDiversityRouter";
 
 const app = express();
 
@@ -10,6 +11,7 @@ app
     .use(json())
     .use(clientRouter)
     .use(jobRouter)
+    .use(jobRouterDiversity)
 
 const port = process.env.PORT || 5001;
 

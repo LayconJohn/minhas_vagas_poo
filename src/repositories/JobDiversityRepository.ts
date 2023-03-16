@@ -1,10 +1,12 @@
 import { JobsDiversity } from "../models/JobsDiversity";
+import { JobsRepository } from "./JobRepository";
 
-export class JobDiversityRepository {
+export class JobDiversityRepository extends JobsRepository{
     private jobsDiversity: JobsDiversity[]
-    private static INSTANCE: JobDiversityRepository;
+    protected static INSTANCE: JobDiversityRepository;
 
     constructor() {
+        super()
         this.jobsDiversity = [];
     }
 
@@ -18,25 +20,9 @@ export class JobDiversityRepository {
         this.jobsDiversity.push(newJobDiversity);
     }
 
-    getAll(): JobsDiversity[] {
-        const jobsDiversity = this.jobsDiversity;
-        if (jobsDiversity.length === 0) throw new Error("Empty jobs Diversity");
-        return jobsDiversity;
-    }
-
-    finishJob(jobId: number): void {
-        const job = this.validateJob(jobId);
-        job.isActive = false;
-    }
-
-    activateJob(jobId: number): void {
-        const job = this.validateJob(jobId);
-        job.isActive = false;
-    }
-
-    private validateJob(jobId: number): JobsDiversity {
-        const job = this.jobsDiversity.find( item => item.id === jobId);
-        if (!job) throw new Error("job not found");
-        return job;
+    getAll() {
+        const jobs = this.jobsDiversity;
+        if (!jobs) throw new Error("Empty job list!");
+        return jobs;
     }
 }
