@@ -25,4 +25,20 @@ export class JobDiversityRepository extends JobsRepository{
         if (!jobs) throw new Error("Empty job list!");
         return jobs;
     }
+
+    finishJob(jobId: number): void {
+        const job = this.validateJobDiversity(jobId);
+        job.isActive = false;
+    }
+
+    //activateJob(jobId: number) {
+        //const job = this.validateJobDiversity(jobId);
+        //job.isActive = true;
+    //}
+
+    private validateJobDiversity(jobId: number): JobsDiversity {
+        const job = this.jobsDiversity.find( item => item.id === jobId );
+        if (!job) throw new Error("job not found");
+        return job;
+    }
 }
