@@ -31,10 +31,10 @@ export class JobDiversityRepository extends JobsRepository{
         job.isActive = false;
     }
 
-    //activateJob(jobId: number) {
-        //const job = this.validateJobDiversity(jobId);
-        //job.isActive = true;
-    //}
+    activateJob(jobId: number) {
+        const job = this.validateJobDiversity(jobId);
+        job.isActive = true;
+    }
 
     private validateJobDiversity(jobId: number): JobsDiversity {
         const job = this.jobsDiversity.find( item => item.id === jobId );
