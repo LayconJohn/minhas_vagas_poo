@@ -1,7 +1,8 @@
 import { JobsDiversity } from "../models/JobsDiversity";
+import { IJobDiversityRepository } from "./IJobDiversityRepository";
 import { JobsRepository } from "./JobRepository";
 
-export class JobDiversityRepository extends JobsRepository{
+export class JobDiversityRepository extends JobsRepository implements IJobDiversityRepository{
     private jobsDiversity: JobsDiversity[]
     protected static INSTANCE: JobDiversityRepository;
 
@@ -31,7 +32,7 @@ export class JobDiversityRepository extends JobsRepository{
         job.isActive = false;
     }
 
-    activateJob(jobId: number) {
+    activateJob(jobId: number): void {
         const job = this.validateJobDiversity(jobId);
         job.isActive = true;
     }

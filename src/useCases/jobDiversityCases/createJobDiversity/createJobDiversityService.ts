@@ -1,5 +1,5 @@
-import { JobDiversityRepository } from "../../../repositories/JobDiversityRepository";
 import { v4 as uuidV4 } from "uuid";
+import { IJobDiversityRepository } from "../../../repositories/IJobDiversityRepository";
 
 interface IRequest{
     name: string;
@@ -13,7 +13,7 @@ interface IRequest{
 }
 
 export class CreateJobDiversityService{
-    constructor(private jobDiversityRepository: JobDiversityRepository) {}
+    constructor(private jobDiversityRepository: IJobDiversityRepository) {}
 
     execute({name, requirements, wage, benefits, isRemote, localization, isActive, type}: IRequest): void {
         const id = uuidV4();

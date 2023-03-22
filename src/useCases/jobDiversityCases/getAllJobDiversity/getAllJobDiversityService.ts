@@ -1,7 +1,7 @@
-import { JobDiversityRepository } from "../../../repositories/JobDiversityRepository";
+import { IJobDiversityRepository } from "../../../repositories/IJobDiversityRepository";
 
 export class GetAllJobDiversityService{
-    constructor(private jobDiversityRepository: JobDiversityRepository){}
+    constructor(private jobDiversityRepository: IJobDiversityRepository){}
 
     execute() {
         return this.jobDiversityRepository.getAll();
