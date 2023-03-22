@@ -1,5 +1,5 @@
-import { CandidateRepository } from "../../../repositories/CandidateRepository";
 import { v4 as uuidV4 } from "uuid";
+import { ICandidateRepository } from "../../../repositories/ICandidateRepository";
 
 interface IRequest{
     name: string;
@@ -10,7 +10,7 @@ interface IRequest{
 }
 
 export class CreateCandidateService {
-    constructor(private candidateRepository: CandidateRepository) {}
+    constructor(private candidateRepository: ICandidateRepository) {}
 
     execute( {name, skills, trainning, experience, projects}: IRequest ) {
         const id = uuidV4();

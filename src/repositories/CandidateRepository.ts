@@ -1,6 +1,7 @@
 import { Candidate } from "../models/Candidates";
+import { ICandidateRepository } from "./ICandidateRepository";
 
-export class CandidateRepository {
+export class CandidateRepository implements ICandidateRepository {
     private candidates: Candidate[];
     private static INSTANCE: CandidateRepository;
     

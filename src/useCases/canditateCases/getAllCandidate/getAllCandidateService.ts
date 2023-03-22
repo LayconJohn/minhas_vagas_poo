@@ -1,4 +1,4 @@
-import { CandidateRepository } from "../../repositories/CandidateRepository";
+import { ICandidateRepository } from "../../../repositories/ICandidateRepository";
 
 interface IRequest{
     id: string;
@@ -10,7 +10,7 @@ interface IRequest{
 }
 
 export class GetAllCandidateService{
-    constructor(private candidateRepository: CandidateRepository) {}
+    constructor(private candidateRepository: ICandidateRepository) {}
 
     execute(): IRequest[] {
         return this.candidateRepository.getAll();
