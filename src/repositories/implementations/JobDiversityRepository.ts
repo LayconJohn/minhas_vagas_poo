@@ -1,8 +1,8 @@
-import { JobsDiversity } from "../models/JobsDiversity";
-import { IJobDiversityRepository } from "./AbstractJobDiversityRepository";
+import { JobsDiversity } from "../../models/JobsDiversity";
+import { AbstractJobDiversityRepository } from "../AbstractJobDiversityRepository";
 import { JobsRepository } from "./JobRepository";
 
-export class JobDiversityRepository extends JobsRepository implements IJobDiversityRepository{
+export class JobDiversityRepository extends JobsRepository implements AbstractJobDiversityRepository{
     private jobsDiversity: JobsDiversity[]
     protected static INSTANCE: JobDiversityRepository;
 

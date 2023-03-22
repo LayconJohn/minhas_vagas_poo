@@ -1,7 +1,7 @@
-import { IJobDiversityRepository } from "../../../repositories/AbstractJobDiversityRepository";
+import { AbstractJobDiversityRepository } from "../../../repositories/AbstractJobDiversityRepository";
 
 export class FinishJobDiversityService{
-    constructor(private jobDiversityRepository: IJobDiversityRepository){}
+    constructor(private jobDiversityRepository: AbstractJobDiversityRepository){}
 
     execute(jobId: number): void {
         const jobDiversityExist = this.jobDiversityRepository.getAll().find(item => item.id === jobId);

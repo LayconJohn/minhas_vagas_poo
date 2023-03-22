@@ -1,4 +1,4 @@
-import { JobDiversityRepository } from "../../../repositories/JobDiversityRepository";
+import { JobDiversityRepository } from "../../../repositories/implementations/JobDiversityRepository";
 import { FinishJobDiversityController } from "./finishJobDiversityController";
 import { FinishJobDiversityService } from "./finishJobDiversityService";
 

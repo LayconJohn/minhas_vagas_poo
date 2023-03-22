@@ -1,4 +1,4 @@
-import { CandidateRepository } from "../../../repositories/CandidateRepository";
+import { CandidateRepository } from "../../../repositories/implementations/CandidateRepository";
 import { GetAllCandidateController } from "./getAllCandidatecontroller";
 import { GetAllCandidateService } from "./getAllCandidateService";
 

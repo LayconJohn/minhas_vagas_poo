@@ -1,4 +1,4 @@
-import { JobsRepository } from "../../../repositories/JobRepository";
+import { JobsRepository } from "../../../repositories/implementations/JobRepository";
 import { FinishJobController } from "./finishJobController";
 import { FinishJobService } from "./finishJobService";
 

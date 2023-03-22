@@ -1,5 +1,5 @@
-import { Job } from "../models/Jobs";
-import { IJobRepository } from "./IJobRepository";
+import { Job } from "../../models/Jobs";
+import { IJobRepository } from "../IJobRepository";
 
 export class JobsRepository implements IJobRepository {
     private jobs: Job[]
