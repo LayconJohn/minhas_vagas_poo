@@ -1,6 +1,7 @@
 import { Job } from "../models/Jobs";
+import { IJobRepository } from "./IJobRepository";
 
-export class JobsRepository {
+export class JobsRepository implements IJobRepository {
     private jobs: Job[]
     protected static INSTANCE: JobsRepository;
 

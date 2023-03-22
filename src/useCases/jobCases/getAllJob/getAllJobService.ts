@@ -1,4 +1,4 @@
-import { JobsRepository } from "../../../repositories/JobRepository";
+import { IJobRepository } from "../../../repositories/IJobRepository";
 
 interface IRequest{
     name: string;
@@ -11,7 +11,7 @@ interface IRequest{
 }
 
 export class GetAllJobService{
-    constructor(private jobsRepository: JobsRepository) {}
+    constructor(private jobsRepository: IJobRepository) {}
 
     execute() {
         return this.jobsRepository.getAll();

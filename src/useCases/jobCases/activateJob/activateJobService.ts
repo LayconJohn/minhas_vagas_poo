@@ -1,7 +1,7 @@
-import { JobsRepository } from "../../../repositories/JobRepository";
+import { IJobRepository } from "../../../repositories/IJobRepository";
 
 export class ActivateJobService{
-    constructor(private jobsRepository: JobsRepository){}
+    constructor(private jobsRepository: IJobRepository){}
 
     execute(jobId: number): void{
         const jobExist = this.jobsRepository.getAll().find(item => item.id === jobId);
