@@ -1,5 +1,5 @@
 import { v4 as uuidV4 } from "uuid";
-import { IJobDiversityRepository } from "../../../repositories/IJobDiversityRepository";
+import { IJobDiversityRepository } from "../../../repositories/AbstractJobDiversityRepository";
 
 interface IRequest{
     name: string;

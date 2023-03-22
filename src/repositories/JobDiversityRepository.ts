@@ -1,5 +1,5 @@
 import { JobsDiversity } from "../models/JobsDiversity";
-import { IJobDiversityRepository } from "./IJobDiversityRepository";
+import { IJobDiversityRepository } from "./AbstractJobDiversityRepository";
 import { JobsRepository } from "./JobRepository";
 
 export class JobDiversityRepository extends JobsRepository implements IJobDiversityRepository{
