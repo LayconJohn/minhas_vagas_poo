@@ -13,7 +13,7 @@ interface IRequest{
 
 export class CreateJobService{
     
-    constructor(private jobRepository: IJobRepository) {}
+    constructor(private jobRepository: IJobRepository<string>) {}
 
     execute({ name, requirements, wage, benefits, isRemote, localization, isActive }: IRequest): void {
         const id = uuidV4();

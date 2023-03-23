@@ -1,7 +1,7 @@
-export class Job {
-
+export class Job<T> {
+    id?: T;
     constructor(
-        public id: string | number,
+        id: T,
         public name: string,
         public requirements: string[],
         public wage: string,
@@ -10,6 +10,6 @@ export class Job {
         public localization: string,
         public isActive: boolean
     ) {
-        
+        this.id = id;
     }
 }

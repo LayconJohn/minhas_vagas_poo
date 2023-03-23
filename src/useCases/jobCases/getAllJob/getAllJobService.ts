@@ -11,7 +11,7 @@ interface IRequest{
 }
 
 export class GetAllJobService{
-    constructor(private jobsRepository: IJobRepository) {}
+    constructor(private jobsRepository: IJobRepository<string>) {}
 
     execute() {
         return this.jobsRepository.getAll();

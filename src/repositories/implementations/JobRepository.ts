@@ -1,8 +1,9 @@
 import { Job } from "../../models/Jobs";
 import { IJobRepository } from "../IJobRepository";
+import { v4 as uuidV4 } from "uuid";
 
-export class JobsRepository implements IJobRepository {
-    private jobs: Job[]
+export class JobsRepository implements IJobRepository<string> {
+    private jobs: Job<string>[]
     protected static INSTANCE: JobsRepository;
 
     constructor() {
@@ -14,8 +15,9 @@ export class JobsRepository implements IJobRepository {
         return this.INSTANCE;
     }
 
-    create( {id, name, requirements, wage, benefits, isRemote, localization, isActive}: Job ): void {
-        const newJob = new Job(id, name, requirements, wage, benefits, isRemote, localization, isActive);
+    create( {id, name, requirements, wage, benefits, isRemote, localization, isActive}: Job<string> ): void {
+        const newId = uuidV4();
+        const newJob = new Job(id = newId, name, requirements, wage, benefits, isRemote, localization, isActive);
         this.jobs.push(newJob);
     }
 
@@ -25,17 +27,17 @@ export class JobsRepository implements IJobRepository {
         return jobs; 
     }
 
-    finishJob(jobId: number): void {
+    finishJob(jobId: string): void {
         const job = this.validateJob(jobId);
         job.isActive = false;
     }
 
-    activateJob(jobId: number): void {
+    activateJob(jobId: string): void {
         const job = this.validateJob(jobId);
         job.isActive = true;
     }
 
-    private validateJob(jobId: number): Job {
+    private validateJob(jobId: string): Job<string> {
         const job = this.jobs.find( item => item.id === jobId );
         if (!job) throw new Error("job not found");
         return job;
