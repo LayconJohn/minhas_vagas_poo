@@ -10,9 +10,9 @@ interface IRequest{
 }
 
 export class GetAllCandidateService{
-    constructor(private candidateRepository: ICandidateRepository) {}
+    constructor(private candidateRepository: ICandidateRepository<string>) {}
 
-    execute(): IRequest[] {
+    execute() {
         return this.candidateRepository.getAll();
     }
 }

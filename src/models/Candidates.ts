@@ -1,13 +1,14 @@
-export class Candidate {
+export class Candidate<T> {
+    id?: T;
 
     constructor(
-        public id: string,
+        id: T,
         public name: string,
         public skills: string[],
         public trainning: string[],
         public experience: string[],
         public projects: string[]
     ) {
-        
+        this.id = id;
     }
 }
