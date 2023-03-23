@@ -1,10 +1,10 @@
 import { Job } from "./Jobs";
 
-export class JobsDiversity extends Job {
-    type: string
-    
+export class JobsDiversity<T> extends Job<T> {
+    type: string;
+    id?: T;
     constructor(
-        id: string | number,
+        id: T,
         name: string,
         requirements: string[],
         wage: string,
@@ -16,5 +16,6 @@ export class JobsDiversity extends Job {
         ) {
         super(id, name, requirements, wage, benefits, isRemote, localization, isActive)
         this.type = type
+        this.id = id
     }
 }

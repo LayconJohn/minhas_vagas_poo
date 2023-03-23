@@ -1,9 +1,10 @@
+import { v4 as uuidV4 } from "uuid";
 import { JobsDiversity } from "../../models/JobsDiversity";
 import { AbstractJobDiversityRepository } from "../AbstractJobDiversityRepository";
 import { JobsRepository } from "./JobRepository";
 
-export class JobDiversityRepository extends JobsRepository implements AbstractJobDiversityRepository{
-    private jobsDiversity: JobsDiversity[]
+export class JobDiversityRepository extends JobsRepository implements AbstractJobDiversityRepository<string>{
+    private jobsDiversity: JobsDiversity<string>[]
     protected static INSTANCE: JobDiversityRepository;
 
     constructor() {
@@ -16,8 +17,9 @@ export class JobDiversityRepository extends JobsRepository implements AbstractJo
         return this.INSTANCE;
     }
 
-    create ( {id, name, requirements, wage, benefits, isRemote, localization, isActive, type}: JobsDiversity ): void {
-        const newJobDiversity = new JobsDiversity(id, name, requirements, wage, benefits, isRemote, localization, isActive, type);
+    create ( {id, name, requirements, wage, benefits, isRemote, localization, isActive, type}: JobsDiversity<string> ): void {
+        const newId = uuidV4();
+        const newJobDiversity = new JobsDiversity(id = newId, name, requirements, wage, benefits, isRemote, localization, isActive, type);
         this.jobsDiversity.push(newJobDiversity);
     }
 
@@ -27,17 +29,17 @@ export class JobDiversityRepository extends JobsRepository implements AbstractJo
         return jobs;
     }
 
-    finishJob(jobId: number): void {
+    finishJob(jobId: string): void {
         const job = this.validateJobDiversity(jobId);
         job.isActive = false;
     }
 
-    activateJob(jobId: number): void {
+    activateJob(jobId: string): void {
         const job = this.validateJobDiversity(jobId);
         job.isActive = true;
     }
 
-    private validateJobDiversity(jobId: number): JobsDiversity {
+    private validateJobDiversity(jobId: string): JobsDiversity<string> {
         const job = this.jobsDiversity.find( item => item.id === jobId );
         if (!job) throw new Error("job not found");
         return job;

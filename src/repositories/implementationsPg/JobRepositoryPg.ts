@@ -1,7 +1,7 @@
 import { Job } from "../../models/Jobs";
 import { IJobRepository } from "../IJobRepository";
 
-export class JobRepository implements IJobRepository<number>{
+export class JobRepositoryPg implements IJobRepository<number>{
     create({ id, name, requirements, wage, benefits, isRemote, localization, isActive }: Job<number>): void {
         throw new Error("Method not implemented.");
     }
