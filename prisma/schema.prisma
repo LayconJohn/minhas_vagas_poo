@@ -1,0 +1,123 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model benefits {
+  id          Int           @id
+  name        String
+  benefitsJob benefitsJob[]
+}
+
+model benefitsJob {
+  id        Int      @id
+  jobId     Int
+  benefitId Int
+  benefits  benefits @relation(fields: [benefitId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  jobs      jobs     @relation(fields: [jobId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model candidates {
+  id                   Int                    @id
+  name                 String
+  experiencesCandidate experiencesCandidate[]
+  projectsCandidate    projectsCandidate[]
+  skillsCandidate      skillsCandidate[]
+  trainningCandidate   trainningCandidate[]
+}
+
+model experiences {
+  id                   Int                    @id
+  name                 String
+  description          String
+  experiencesCandidate experiencesCandidate[]
+}
+
+model experiencesCandidate {
+  id           Int         @id
+  candidateId  Int
+  experienceId Int
+  candidates   candidates  @relation(fields: [candidateId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  experiences  experiences @relation(fields: [experienceId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model jobs {
+  id              Int               @id
+  name            String
+  wage            Int
+  isRemote        Boolean
+  localization    String?
+  benefitsJob     benefitsJob[]
+  requirementsJob requirementsJob[]
+}
+
+model jobsDiversity {
+  id           Int     @id
+  name         String
+  wage         Int
+  isRemote     Boolean
+  localization String?
+  type         String
+}
+
+model projects {
+  id                Int                 @id
+  name              String
+  description       String
+  projectsCandidate projectsCandidate[]
+}
+
+model projectsCandidate {
+  id          Int        @id
+  candidateId Int
+  projectId   Int
+  candidates  candidates @relation(fields: [candidateId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  projects    projects   @relation(fields: [projectId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model requirements {
+  id              Int               @id
+  name            String
+  requirementsJob requirementsJob[]
+}
+
+model requirementsJob {
+  id            Int          @id
+  jobId         Int
+  requirementId Int
+  jobs          jobs         @relation(fields: [jobId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  requirements  requirements @relation(fields: [requirementId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model skills {
+  id              Int               @id
+  name            String
+  skillsCandidate skillsCandidate[]
+}
+
+model skillsCandidate {
+  id          Int        @id
+  candidateId Int
+  skillId     Int
+  candidates  candidates @relation(fields: [candidateId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  skills      skills     @relation(fields: [skillId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model trainningCandidate {
+  id          Int        @id
+  candidateId Int
+  trainningId Int
+  candidates  candidates @relation(fields: [candidateId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  trainnings  trainnings @relation(fields: [trainningId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model trainnings {
+  id                 Int                  @id
+  name               String
+  description        String
+  trainningCandidate trainningCandidate[]
+}
